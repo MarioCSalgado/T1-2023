@@ -28,14 +28,19 @@ class Expendedor{
             trencito.addDulce(new Trencito(400+i));
         }
     }
+    
 
     public Producto comprarProducto(Moneda m, int codigo) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException{
         if (m == null) {//si la moneda no es valida         
             throw new PagoIncorrectoException("Su Moneda no es valida");
         }
-        
-        if (precios > m.getSerie().getValor()) { //si los precios son mayores al valor de la moneda, se almacena la moneda y retorna null
+        if(codigo>4 || codigo<1){
             monVu.addMoneda(m);
+            throw new NoHayProductoException("El numero ingresado para el codigo no es valido");
+        }
+            
+        if (precios > m.getSerie().getValor()) { //si los precios son mayores al valor de la moneda, se almacena la moneda y retorna null
+            monVu.addMoneda(m); 
             
         } else if (precios <= m.getSerie().getValor()) {//si los precios son menores a la moneda, se almacena el vuelto y se ve los casos para la bebida
            
@@ -91,49 +96,8 @@ class Expendedor{
 
                         return trencito.getDulce();
                     }
-
-                default:
-                    vuelto = m.getSerie().getValor();
-                    int numLoops = vuelto / 100;
-                    for (int i = 0; i < numLoops; i++) {
-                        monVu.addMoneda(new Moneda100());
-                    }
-                    return null;
-            }
           }
-
-        /*if (precios > m.getSerie().getValor()) { //si los precios son mayores al valor de la moneda, se almacena la moneda y retorna null
-            monVu.addMoneda(m);
-            
-        } else if (precios <= m.getSerie().getValor()) {//si los precios son menores a la moneda, se almacena el vuelto y se ve los casos para la bebida
-           
-            if(coca.sizeBebida()==0 && sprite.sizeBebida()==0 && super8.sizeDulce()==0 && trencito.sizeDulce()==0){
-               throw new NoHayProductoException("No hay productos, los depositos estan vacios");
-           }
-           //(NoHayProductoException)
-            
-            vuelto = m.getSerie().getValor()-precios;
-            int numLoops= vuelto/100;
-
-            for(int i=0;i<numLoops;i++){
-                monVu.addMoneda(new Moneda100());
-            }
-
-            switch (codigo) {
-                case COCA:
-                    return coca.getBebida();
-                case SPRITE:
-                    return sprite.getBebida();
-                case SUPER8:
-                    return super8.getDulce();
-                case TRENCITO:
-                    return trencito.getDulce();
-                default:
-                    return null;
-            }
-        }*/
-        
-        
+        }
         
         throw new PagoInsuficienteException("Pago Insuficiente");// (PagoInsuficienteException)
     }
