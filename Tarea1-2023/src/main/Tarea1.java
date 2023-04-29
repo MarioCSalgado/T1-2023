@@ -20,7 +20,7 @@ public class Tarea1 {
         } catch (NoHayProductoException e) {
             System.out.println("El codigo ingresado no corresponde a ningun producto, se le devolvera su moneda: " + exp.getVuelto().getValor());
         }
-//-----trata de comprar SIN Moneda, lanza una exception y con try-catch devuelve el msg-----
+//-----trata de comprar SIN Moneda, lanza una exception y con try-catch devuelve el msg-------
         try {
             m = null;
             c = new Comprador(m, Expendedor.SPRITE, exp);
