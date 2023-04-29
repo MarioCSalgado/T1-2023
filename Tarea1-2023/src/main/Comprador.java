@@ -5,7 +5,7 @@ package main;
 class Comprador{
     private String sonido;
     private int vuelto=0;
-//Duda es necesario poner throws en comprador?
+
     public Comprador(Moneda m, int cualExpende, Expendedor exp) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {//1500,1400
         Producto pd= exp.comprarProducto(m,cualExpende);
         
@@ -13,11 +13,11 @@ class Comprador{
             sonido=pd.degustar();
         }
         
-        Moneda monedin= exp.getVuelto();
+        Moneda monedaOut= exp.getVuelto();
               
-         while(monedin != null){
-            this.vuelto= vuelto + monedin.getValor();
-            monedin=exp.getVuelto();
+         while(monedaOut != null){
+            this.vuelto= vuelto + monedaOut.getValor();
+            monedaOut=exp.getVuelto();
         }
     }
     
@@ -25,11 +25,8 @@ class Comprador{
         return vuelto;
     }
     
-    public String queBebiste(){
+    public String queDegustaste(){
         return sonido;
     }
-    
-    public String queComiste(){
-        return sonido;
-    }
+
 }
