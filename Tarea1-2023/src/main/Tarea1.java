@@ -1,7 +1,8 @@
 package main;
-
-public class Tarea1 {
-
+/**
+*Clase main, se usara para instanciar las otras clases respectivas y darle funcionalidad al codigo en conjunto
+*/
+public class Tarea1{
     public static void main(String[] args) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
         Expendedor exp = new Expendedor(4);
         Moneda m = null;

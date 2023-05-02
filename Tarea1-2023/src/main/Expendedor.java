@@ -1,5 +1,20 @@
 package main;
-
+import java.util.Collections;
+import java.util.ArrayList;
+/**
+*Clase Expendedor, simula un expendedor creando sus depositos respectivos para cada bebida y producto en general, además de a sus monedas
+*@field coca Es el deposito de las cocacolas
+*@field sprite El deposito de las sprite
+*@field super8 El deposito de los super8
+*@field trencito El deposito de los trencitos
+*@field monVu El deposito de las monedas
+*@field COCA Constante para obtener la cocacola
+*@field SPRITE Constante para obtener la sprite 
+*@field SUPER8 Constante para tener un super8
+*@field TRENCITO Constante para tener un trencito
+*@field precios Son los precios de los productos
+*@field vuelto Corresponde al vuelto
+*/
 class Expendedor{
     private Deposito<Bebida> coca;
     private Deposito<Bebida> sprite;
@@ -16,7 +31,11 @@ class Expendedor{
     public static final int precioSuper8=300;
     public static final int precioTrencito=1200;
     public int vuelto=0;
-   
+    /**
+    *Metodo constructor de Expendedor, instancia los depositos  y además agrega sus productos dado un numero entragado como parametro, tambien guarda los precios
+    *@param productos Es el numero de productos que se desea
+    *@param precioProductos Corresponde al precio de los productos
+    */
     public Expendedor(int productos) {
         coca = new Deposito<>();
         sprite = new Deposito<>();
@@ -32,7 +51,12 @@ class Expendedor{
         }
     }
     
-
+    /**
+    *Metodo que sirve para escoger un producto dado sus parametros y obtenerlo en caso de estar, ademas devolver el vuelto en monedas de 100 que son creadas en el mismo metodo
+    *@param m Moneda con la cual se compra el producto
+    *@param codigo Numero asociado al producto que se desea
+    *@return Retorna el producto en si requerido, ya sea Bebida,Dulce,etc
+    */
     public Producto comprarProducto(Moneda m, int codigo) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException{
         if (m == null) {//si la moneda no es valida         
             throw new PagoIncorrectoException("Su Moneda no es valida");
@@ -121,10 +145,20 @@ class Expendedor{
 
         throw new PagoInsuficienteException("Pago Insuficiente");// (PagoInsuficienteException)
     }
-
+    /**
+    *Metodo que ordena la lista del arraylist obtenida mediante un getter, respecto a su valor de monedas en orden ascendente
+    */
+    public void ordenarMonedas() {
+        Collections.sort(monVu.getMonedas());
+    }
+    /**
+    *Metodo que retorna una moneda correspondiente al vuelto
+    *@return La moneda en si    
+    */
     public Moneda getVuelto(){
         Moneda mon1= (Moneda) monVu.getDeposito();
         if(mon1==null) return null;
         else return mon1;
     }
 }
+
