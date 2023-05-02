@@ -13,5 +13,4 @@ abstract class Dulce extends Producto{//no se puede instanciar directamente
         super(serie);
     }  
 }
-
  
