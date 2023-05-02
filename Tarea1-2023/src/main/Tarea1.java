@@ -18,7 +18,7 @@ public class Tarea1 {
             c = new Comprador(m, 657, exp);
             System.out.println(c.queDegustaste() + ", " + c.cuantoVuelto()); //Si le sacamos los comentarios lanza NoHayProducotException
         } catch (NoHayProductoException e) {
-            System.out.println("El codigo ingresado no corresponde a ningun producto, se le devolvera su moneda: " + exp.getVuelto().getValor());
+            System.out.println(e.getMessage() + ", se le devolvera su moneda: " + exp.getVuelto().getValor());
         }
 //-----trata de comprar SIN Moneda, lanza una exception y con try-catch devuelve el msg-------
         try {
@@ -26,7 +26,7 @@ public class Tarea1 {
             c = new Comprador(m, Expendedor.SPRITE, exp);
             System.out.println(c.queDegustaste() + ", " + c.cuantoVuelto());// Si le sacamos los comentarios lanza PagoIncorrectoException
         } catch (PagoIncorrectoException e) {
-            System.out.println("No se ingreso ninguna moneda");
+            System.out.println(e.getMessage());
         }
 
 //-----con dinero JUSTO para el precio y y si esta vacio retorna una exception, usamos try-catch para imprimir un msg-----
@@ -47,7 +47,7 @@ public class Tarea1 {
             c = new Comprador(m, Expendedor.COCA, exp);
             System.out.println(c.queDegustaste() + ", " + c.cuantoVuelto());// cocacola $100
         } catch (NoHayProductoException e) {
-            System.out.println("No quedan Cocacola's, se le devolvera su moneda: " + exp.getVuelto().getValor());
+            System.out.println(e.getMessage() + ", se le devolvera su moneda: " + exp.getVuelto().getValor());
         }
         
 //-----con MENOS dinero que el precio, lanza una exception y usamos try-catch para devolver un msg y la moneda-----
@@ -56,7 +56,7 @@ public class Tarea1 {
             c = new Comprador(m, Expendedor.SPRITE, exp);
             System.out.println(c.queDegustaste() + ", " + c.cuantoVuelto());//si le sacamos los comentarios lanza PagoInsuficienteException
         } catch (PagoInsuficienteException e) {
-            System.out.println("No le alcanzaba para comprar el producto, se le devolvera su moneda: " + exp.getVuelto().getValor());
+            System.out.println(e.getMessage() + ", se le devolvera su moneda: " + exp.getVuelto().getValor());
         }
 
 //-----con MAS dinero que el precio y si esta vacio retorna una exception, usamos try-catch para imprimir un msg-----
@@ -77,7 +77,7 @@ public class Tarea1 {
             c = new Comprador(m, Expendedor.SPRITE, exp);
             System.out.println(c.queDegustaste() + ", " + c.cuantoVuelto());// sprite $600
         } catch (NoHayProductoException e) {
-            System.out.println("No quedan Sprite's, se le devolvera su moneda: " + exp.getVuelto().getValor());
+            System.out.println(e.getMessage() + ", se le devolvera su moneda: " + exp.getVuelto().getValor());
         }
 
 //-----Con Mas dinero para comprar Super8 y si esta vacio retorna una exception, usamos try-catch para imprimir un msg-----
@@ -98,7 +98,7 @@ public class Tarea1 {
             c = new Comprador(m, Expendedor.SUPER8, exp);
             System.out.println(c.queDegustaste() + ", " + c.cuantoVuelto());
         } catch (NoHayProductoException e) {
-            System.out.println("No quedan Super8's, se le devolvera su moneda: " + exp.getVuelto().getValor());
+            System.out.println(e.getMessage() + ", se le devolvera su moneda: " + exp.getVuelto().getValor());
         }
         
 //-----Con Mas dinero para comprar Trencito y si esta vacio retorna una exception, usamos try-catch para imprimir un msg-----
@@ -120,9 +120,7 @@ public class Tarea1 {
             System.out.println(c.queDegustaste() + ", " + c.cuantoVuelto());// trencito $300
 
         } catch (NoHayProductoException e) {
-            System.out.println("No quedan Trencito's, se le devolvera su moneda: " + exp.getVuelto().getValor());
-        }
-
-        
+            System.out.println(e.getMessage() + ", se le devolvera su moneda: " + exp.getVuelto().getValor());
+        }    
     }
 }
