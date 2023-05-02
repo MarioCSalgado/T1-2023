@@ -11,3 +11,4 @@ public class PagoIncorrectoException extends Exception {
         super(texto);
     }
 }
+ 

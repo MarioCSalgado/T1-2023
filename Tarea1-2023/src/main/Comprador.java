@@ -42,5 +42,5 @@ class Comprador{
     public String queDegustaste(){
         return sonido;
     }
-
+ 
 }
